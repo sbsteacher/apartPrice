@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>결과</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>법정동</th>
+			<th>지번</th>
+			<th>아파트명</th>
+			<th>거래금액</th>
+			<th>건축년도</th>
+			<th>계약년도</th>
+			<th>계약월</th>
+			<th>계약일</th>
+			<th>전용면적</th>
+			<th>층</th>
+		</tr>
+		<tr th:each="item : ${resultList}">
+			<td th:text=${item.dong}></td>
+			<td th:text=${item.jibun}></td>
+			<td th:text=${item.apartmentName}></td>
+			<td th:text=${item.dealAmount}></td>
+			<td th:text=${item.buildYear}></td>
+			<td th:text=${item.dealYear}></td>
+			<td th:text=${item.dealMonth}></td>
+			<td th:text=${item.dealDay}></td>
+			<td th:text=${item.areaForExclusiveUse}></td>
+			<td th:text=${item.flr}></td>
+		</tr>
+	</table>
+</body>
+</html>

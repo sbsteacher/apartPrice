@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>검색</title>
+</head>
+<body>
+	<form action="/result" method="POST">
+		연도: <select name="dealYear">		
+			<option th:each="num : ${#numbers.sequence(2000, 2020)}" 
+				th:value="${num}" th:utext="${num}+년">			
+			</option>		
+		</select>
+		
+		월: <select name="dealMonth">		
+			<option th:each="num : ${#numbers.sequence(1, 12)}" 
+				th:value="${num}" th:utext="${num}+월">			
+			</option>		
+		</select>
+		
+		지역: <select name="exLocationCd">
+			<option th:each="item : ${locationList}" 
+				th:value="${item.exLocationCd}" th:utext="${item.locationNm}">
+			</option>
+		</select>
+		<input type="submit" value="검색">
+	</form>
+</body>
+</html>

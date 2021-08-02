@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.HomeMapper">
+	<insert id="insApartmentInfo">
+		INSERT INTO apartment_info
+		( 
+			  dong, jibun, apartmentName, dealAmount, buildYear
+			, dealYear, dealMonth, dealDay, areaForExclusiveUse, flr
+			, inLocationCd
+		)
+		VALUES
+		(
+			  #{dong}, #{jibun}, #{apartmentName}, #{dealAmount}, #{buildYear}
+			, #{dealYear}, #{dealMonth}, #{dealDay}, #{areaForExclusiveUse}, #{flr}
+			, #{inLocationCd}
+		)
+	</insert>
+
+	<select id="selLocationCodeList" resultType="LocationCodeEntity">
+		SELECT * FROM location_code
+	</select>
+	
+	<select id="selLocationCode" resultType="LocationCodeEntity">
+		SELECT * FROM location_code
+		WHERE exLocationCd = #{exLocationCd}
+	</select>
+	
+	<select id="selApartmentInfoList" resultType="ApartmentInfoEntity">
+		SELECT A.*
+		FROM apartment_info A
+		INNER JOIN location_code B
+		ON A.inLocationCd = B.inLocationCd
+		WHERE A.dealYear = #{dealYear}
+		AND A.dealMonth = #{dealMonth} 
+		AND B.exLocationCd = #{exLocationCd}
+	</select>
+</mapper>
